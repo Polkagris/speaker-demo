@@ -14,11 +14,9 @@ function SingleSpeaker(props) {
   // NAME
   const handleNameClick = () => {
     setNameIsClicked(!nameIsClicked);
-    console.log(nameIsClicked);
   };
 
   const updateNameHandler = () => {
-    console.log("updated!");
     setNameIsClicked(!nameIsClicked);
     updateSpeaker();
     props.getAllSpeakers();
@@ -35,7 +33,6 @@ function SingleSpeaker(props) {
   };
 
   const updateDescriptionHandler = () => {
-    console.log("updated!");
     setDescriptionIsClicked(!descriptionIsClicked);
     updateSpeaker();
     props.getAllSpeakers();
@@ -45,6 +42,7 @@ function SingleSpeaker(props) {
     setDescriptionInput(e.target.value);
   };
 
+  // UPDATE
   const updateSpeaker = () => {
     const queryString = encodeURI(`{"id":"${speaker.id}"}`);
     let headers = new Headers();
@@ -69,12 +67,43 @@ function SingleSpeaker(props) {
       }
     ).then(response => {
       console.log("Response inside update speaker:", response);
+
+      return response.json();
+    });
+  };
+
+  // DELETE
+  const onDeleteClickHandler = () => {
+    console.log("delete this");
+    if (!window.confirm(`Are you sure you want to delete ${speaker.name}?`))
+      return;
+    const queryString = encodeURI(`{"id":"${speaker.id}"}`);
+    let headers = new Headers();
+
+    headers.set(
+      "Authorization",
+      "Basic " + base64.encode(username + ":" + password)
+    );
+
+    fetch(
+      `https://planet9test.neptune-software.com:8081/api/entity/festival-speakers?where=${queryString}`,
+      {
+        method: "DELETE",
+        body: JSON.stringify({}),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          Authorization: "Basic " + base64.encode(username + ":" + password)
+        }
+      }
+    ).then(response => {
+      console.log("Response inside delete speaker:", response);
+      props.getAllSpeakers();
       return response.json();
     });
   };
 
   return (
-    <div>
+    <div style={css.container}>
       <div>{speaker.id}</div>
       <div onClick={handleNameClick}>{speaker.name || "undefined"}</div>
       {nameIsClicked ? (
@@ -99,13 +128,26 @@ function SingleSpeaker(props) {
             placeholder="name"
             onChange={onDescriptionChangeHandler}
           />
+
           <button onClick={updateDescriptionHandler}>Update</button>
         </div>
       ) : (
         false
       )}
+      <div>{speaker.position}</div>
+      <button onClick={onDeleteClickHandler}>Delete</button>
     </div>
   );
 }
+
+const css = {
+  container: {
+    width: "400px",
+    border: "1px solid black",
+    padding: "5px",
+    color: "white",
+    backgroundColor: "gray"
+  }
+};
 
 export default SingleSpeaker;

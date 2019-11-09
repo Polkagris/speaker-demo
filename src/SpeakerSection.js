@@ -5,7 +5,6 @@ import SingleSpeaker from "./SingleSpeaker";
 
 function SpeakerSection(props) {
   const [speakerObjectState, setSpeakerObjectState] = useState([]);
-  const [nameInputState, setNameInputState] = useState("");
   const [updateState, setUpdateState] = useState(false);
 
   const username = "appdemo";
@@ -63,19 +62,38 @@ function SpeakerSection(props) {
   };
 
   return (
-    <div className="App">
-      <div>
-        {speakerObjectState.map(it => (
-          <ul>
-            <SingleSpeaker
-              speaker={it}
-              getAllSpeakers={handleUpdatedSpeakers}
-            />
-          </ul>
-        ))}
+    <div>
+      <div style={css.wrapper}>
+        <h1 style={css.title}>Speaker App</h1>
+        {speakerObjectState
+          .sort((a, b) => a.position - b.position)
+          .map(it => (
+            <ul>
+              <SingleSpeaker
+                speaker={it}
+                getAllSpeakers={handleUpdatedSpeakers}
+              />
+            </ul>
+          ))}
       </div>
     </div>
   );
 }
+
+const css = {
+  wrapper: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    fontFamily: "Montserrat"
+  },
+  title: {
+    textAlign: "center",
+    color: "black",
+    width: "100%",
+    fontWeight: "bold",
+    fontSize: "45px"
+  }
+};
 
 export default SpeakerSection;
