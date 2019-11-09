@@ -1,10 +1,12 @@
 import React from "react";
 import SpeakerSection from "./SpeakerSection";
+import CreateNewSpeakerSection from "./CreateNewSPeakerSection";
 
 function App() {
   return (
     <div className="App">
-      <SpeakerSection title="The king is born" />
+      <CreateNewSpeakerSection />
+      <SpeakerSection />
     </div>
   );
 }

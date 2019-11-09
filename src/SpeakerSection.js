@@ -10,6 +10,7 @@ function SpeakerSection(props) {
   const username = "appdemo";
   const password = "en kort demo";
 
+  // CREATE
   const addNewSpeaker = () => {
     let headers = new Headers();
 
@@ -35,6 +36,7 @@ function SpeakerSection(props) {
     });
   };
 
+  // GET ALL SPEAKERS
   useEffect(() => {
     getAllSpeakers()
       .then(res => {
@@ -57,6 +59,7 @@ function SpeakerSection(props) {
     );
   };
 
+  // For updating list
   const handleUpdatedSpeakers = () => {
     setUpdateState(false);
   };
@@ -92,7 +95,11 @@ const css = {
     color: "black",
     width: "100%",
     fontWeight: "bold",
-    fontSize: "45px"
+    fontSize: "45px",
+
+    hover: {
+      color: "red"
+    }
   }
 };
 

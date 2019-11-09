@@ -135,7 +135,13 @@ function SingleSpeaker(props) {
         false
       )}
       <div>{speaker.position}</div>
-      <button onClick={onDeleteClickHandler}>Delete</button>
+      <button
+        style={css.button}
+        className="deleteButton"
+        onClick={onDeleteClickHandler}
+      >
+        Delete
+      </button>
     </div>
   );
 }
@@ -147,6 +153,23 @@ const css = {
     padding: "5px",
     color: "white",
     backgroundColor: "gray"
+  },
+  button: {
+    padding: "20px",
+    border: "none",
+    textTransform: "uppercase",
+    textDecoration: "none",
+    backgroundColor: "black",
+    color: "white",
+    cursor: "pointer",
+    ":hover": {
+      backgroundColor: "red",
+      color: "red",
+      padding: "100px"
+    },
+    "&:hover": {
+      color: "red"
+    }
   }
 };
 
