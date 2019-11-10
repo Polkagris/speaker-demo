@@ -104,7 +104,6 @@ function SingleSpeaker(props) {
 
   return (
     <div style={css.container}>
-      <div>{speaker.id}</div>
       <div onClick={handleNameClick}>{speaker.name || "undefined"}</div>
       {nameIsClicked ? (
         <div>
@@ -135,6 +134,9 @@ function SingleSpeaker(props) {
         false
       )}
       <div>{speaker.position}</div>
+      <div>{speaker.email}</div>
+      <div>{speaker.company}</div>
+      <img src={speaker.avatar} alt="avatar" style={css.image} />
       <button
         style={css.button}
         className="deleteButton"
@@ -148,6 +150,8 @@ function SingleSpeaker(props) {
 
 const css = {
   container: {
+    display: "flex",
+    flexDirection: "column",
     width: "400px",
     border: "1px solid black",
     padding: "5px",
@@ -162,14 +166,14 @@ const css = {
     backgroundColor: "black",
     color: "white",
     cursor: "pointer",
-    ":hover": {
+    "&:hover": {
       backgroundColor: "red",
       color: "red",
       padding: "100px"
-    },
-    "&:hover": {
-      color: "red"
     }
+  },
+  image: {
+    maxWidth: "100px"
   }
 };
 

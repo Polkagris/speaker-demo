@@ -10,7 +10,7 @@ function SpeakerSection(props) {
   const username = "appdemo";
   const password = "en kort demo";
 
-  // CREATE
+  /* // CREATE
   const addNewSpeaker = () => {
     let headers = new Headers();
 
@@ -34,7 +34,7 @@ function SpeakerSection(props) {
     ).then(response => {
       return response.json();
     });
-  };
+  }; */
 
   // GET ALL SPEAKERS
   useEffect(() => {
@@ -67,7 +67,6 @@ function SpeakerSection(props) {
   return (
     <div>
       <div style={css.wrapper}>
-        <h1 style={css.title}>Speaker App</h1>
         {speakerObjectState
           .sort((a, b) => a.position - b.position)
           .map(it => (
