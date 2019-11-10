@@ -107,12 +107,14 @@ function CreateNewSpeakerSection() {
 const css = {
   container: {
     display: "flex",
-    //width: "500px",
     justifyContent: "center",
     flexWrap: "wrap",
     maxWidth: "500px",
     maxHeight: "600px",
-    margin: "0 auto"
+    margin: "0 auto",
+    backgroundColor: "#E7E7E7",
+    marginTop: "20px",
+    padding: "10px"
   },
   title: {
     width: "100%",

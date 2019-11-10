@@ -165,6 +165,7 @@ const css = {
     flexWrap: "wrap",
     width: "550px",
     minHeight: "300px",
+    margin: "5px",
     border: "1px solid #A3A3A3",
     padding: "5px",
     color: "white",
