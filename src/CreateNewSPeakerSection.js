@@ -107,9 +107,11 @@ function CreateNewSpeakerSection() {
 const css = {
   container: {
     display: "flex",
+    //width: "500px",
     justifyContent: "center",
     flexWrap: "wrap",
     maxWidth: "500px",
+    maxHeight: "600px",
     margin: "0 auto"
   },
   title: {
@@ -117,8 +119,6 @@ const css = {
     textAlign: "center"
   },
   inputField: {
-    //display: "block",
-    //width: "200px",
     padding: "10px 20px",
     margin: "5px"
   },

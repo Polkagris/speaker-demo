@@ -4,11 +4,19 @@ import CreateNewSpeakerSection from "./CreateNewSPeakerSection";
 
 function App() {
   return (
-    <div className="App">
+    <div style={css.wrapper}>
       <CreateNewSpeakerSection />
       <SpeakerSection />
     </div>
   );
 }
+
+const css = {
+  wrapper: {
+    display: "flex",
+    flexWrap: "wrap",
+    backgroundColor: "#F0F0F0"
+  }
+};
 
 export default App;

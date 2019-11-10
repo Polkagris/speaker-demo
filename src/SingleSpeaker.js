@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import base64 from "base-64";
+import SingleSpeakerUpdateValue from "./SingleSpeakerUpdateValue";
 
 function SingleSpeaker(props) {
   const [nameIsClicked, setNameIsClicked] = useState(false);
@@ -29,7 +30,6 @@ function SingleSpeaker(props) {
   // DESCRIPTION
   const handleDescriptionClick = () => {
     setDescriptionIsClicked(!descriptionIsClicked);
-    console.log(descriptionIsClicked);
   };
 
   const updateDescriptionHandler = () => {
@@ -104,46 +104,57 @@ function SingleSpeaker(props) {
 
   return (
     <div style={css.container}>
-      <div onClick={handleNameClick}>{speaker.name || "undefined"}</div>
-      {nameIsClicked ? (
-        <div>
-          <input
-            type="text"
-            placeholder="name"
-            onChange={onNameChangeHandler}
-          />
-          <button onClick={updateNameHandler}>Update</button>
+      <div style={css.speakerTextColumn}>
+        <div style={css.speakerValue} onClick={handleNameClick}>
+          {speaker.name || "undefined"}
         </div>
-      ) : (
-        false
-      )}
-      <div onClick={handleDescriptionClick}>
-        {speaker.description || "undefined"}
+        {nameIsClicked ? (
+          <div>
+            <input
+              style={css.textInput}
+              type="text"
+              placeholder="name"
+              onChange={onNameChangeHandler}
+            />
+            <button style={css.inputButton} onClick={updateNameHandler}>
+              Update
+            </button>
+          </div>
+        ) : (
+          false
+        )}
+        <div style={css.speakerValue} onClick={handleDescriptionClick}>
+          {speaker.description || "undefined"}
+        </div>
+        {descriptionIsClicked ? (
+          <div>
+            <input
+              style={css.textInput}
+              type="text"
+              placeholder="description"
+              onChange={onDescriptionChangeHandler}
+            />
+            <button style={css.inputButton} onClick={updateDescriptionHandler}>
+              Update
+            </button>
+          </div>
+        ) : (
+          false
+        )}
+        <div>{speaker.email}</div>
+        <div>{speaker.company}</div>
+        <div>{speaker.position}</div>
       </div>
-      {descriptionIsClicked ? (
-        <div>
-          <input
-            type="text"
-            placeholder="name"
-            onChange={onDescriptionChangeHandler}
-          />
-
-          <button onClick={updateDescriptionHandler}>Update</button>
-        </div>
-      ) : (
-        false
-      )}
-      <div>{speaker.position}</div>
-      <div>{speaker.email}</div>
-      <div>{speaker.company}</div>
       <img src={speaker.avatar} alt="avatar" style={css.image} />
-      <button
-        style={css.button}
-        className="deleteButton"
-        onClick={onDeleteClickHandler}
-      >
-        Delete
-      </button>
+      <div style={css.buttonContainer}>
+        <button
+          style={css.button}
+          className="deleteButton"
+          onClick={onDeleteClickHandler}
+        >
+          Delete
+        </button>
+      </div>
     </div>
   );
 }
@@ -151,19 +162,56 @@ function SingleSpeaker(props) {
 const css = {
   container: {
     display: "flex",
-    flexDirection: "column",
-    width: "400px",
-    border: "1px solid black",
+    flexWrap: "wrap",
+    width: "550px",
+    minHeight: "300px",
+    border: "1px solid #A3A3A3",
     padding: "5px",
     color: "white",
-    backgroundColor: "gray"
+    backgroundColor: "#BABABA",
+    boxShadow: "20px 18px 15px -18px rgba(0,0,0,0.5)"
   },
-  button: {
+  speakerTextColumn: {
+    display: "flex",
+    flexDirection: "column",
+    flex: "1 1 0"
+  },
+  speakerValue: {
+    cursor: "pointer"
+  },
+  textInput: {
     padding: "20px",
+    margin: "10px 0"
+  },
+  inputButton: {
+    padding: "20px",
+    margin: "10px 0",
     border: "none",
     textTransform: "uppercase",
     textDecoration: "none",
-    backgroundColor: "black",
+    backgroundColor: "#FFC725",
+    color: "white",
+    cursor: "pointer",
+    "&:hover": {
+      backgroundColor: "red",
+      color: "red",
+      padding: "100px"
+    }
+  },
+  buttonContainer: {
+    display: "flex",
+    width: "100%",
+    alignItems: "flex-end"
+  },
+  button: {
+    width: "100%",
+    height: "70px",
+    padding: "20px",
+    margin: "10px",
+    border: "none",
+    textTransform: "uppercase",
+    textDecoration: "none",
+    backgroundColor: "#581845",
     color: "white",
     cursor: "pointer",
     "&:hover": {
@@ -173,7 +221,9 @@ const css = {
     }
   },
   image: {
-    maxWidth: "100px"
+    maxWidth: "100px",
+    maxHeight: "100px",
+    flex: "2 2 0"
   }
 };
 
