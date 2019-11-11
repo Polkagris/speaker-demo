@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import base64 from "base-64";
 import SingleSpeaker from "./SingleSpeaker";
 
 function SpeakerSection(props) {
@@ -9,32 +8,6 @@ function SpeakerSection(props) {
 
   const username = "appdemo";
   const password = "en kort demo";
-
-  /* // CREATE
-  const addNewSpeaker = () => {
-    let headers = new Headers();
-
-    headers.set(
-      "Authorization",
-      "Basic " + base64.encode(username + ":" + password)
-    );
-
-    fetch(
-      "https://planet9test.neptune-software.com:8081/api/entity/festival-speakers",
-      {
-        headers: headers,
-        method: "PUT",
-        body: JSON.stringify({
-          name: "Testing Testington"
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8"
-        }
-      }
-    ).then(response => {
-      return response.json();
-    });
-  }; */
 
   // GET ALL SPEAKERS
   useEffect(() => {
@@ -73,6 +46,7 @@ function SpeakerSection(props) {
           .map(it => (
             <ul>
               <SingleSpeaker
+                key={it.id}
                 speaker={it}
                 getAllSpeakers={handleUpdatedSpeakers}
               />
@@ -95,11 +69,7 @@ const css = {
     color: "black",
     width: "100%",
     fontWeight: "bold",
-    fontSize: "25px",
-
-    hover: {
-      color: "red"
-    }
+    fontSize: "25px"
   }
 };
 

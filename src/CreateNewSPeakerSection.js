@@ -40,7 +40,7 @@ function CreateNewSpeakerSection() {
     document.getElementById("speakerInputForm").reset();
   };
 
-  // CREATE (on add click)
+  // CREATE NEW SPEAKER
   const addNewSpeakerHandler = () => {
     console.log("clicked create new speaker!", speakerObject);
 

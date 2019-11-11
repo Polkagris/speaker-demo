@@ -4,8 +4,6 @@ import "./HoverComponents.css";
 function UpdateSpeakerValue(props) {
   const handleItemClick = () => {
     props.toggleClick(!props.isClicked);
-    console.log("company is clicked");
-    console.log("clicked company state:", props.isClicked);
   };
 
   const onItemChangeHandler = e => {

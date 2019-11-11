@@ -148,7 +148,7 @@ const css = {
     padding: "5px",
     color: "white",
     backgroundColor: "#BABABA",
-    boxShadow: "20px 18px 15px -18px rgba(0,0,0,0.5)"
+    boxShadow: "10px 10px 10px -10px rgba(0,0,0,0.5)"
   },
   speakerTextColumn: {
     display: "flex",
