@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import base64 from "base-64";
 import UpdateEmail from "./UpdateEmail";
+import UpdateSpeakerValue from "./UpdateSpeakerValue";
 
 function SingleSpeaker(props) {
   const [nameIsClicked, setNameIsClicked] = useState(false);
@@ -11,6 +12,10 @@ function SingleSpeaker(props) {
   // test email
   const [emailInput, setEmailInput] = useState("");
   const [emailIsClicked, setEmailIsClicked] = useState(false);
+
+  // test company
+  const [companyInput, setCompanyInput] = useState("");
+  const [companyIsClicked, setCompanyIsClicked] = useState(false);
 
   const { speaker } = props;
 
@@ -64,7 +69,8 @@ function SingleSpeaker(props) {
         body: JSON.stringify({
           name: nameInput || speaker.name,
           description: descriptionInput || speaker.description,
-          email: emailInput || speaker.email
+          email: emailInput || speaker.email,
+          company: companyInput || speaker.company
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -147,14 +153,6 @@ function SingleSpeaker(props) {
         ) : (
           false
         )}
-        {/* // PROPS NEEDED
-  // speaker.email
-  // updateSpeaker
-  // getAllSpeakers
-
-  // STATE NEEDED
-  // setEmailInput
-  // setEmailIsClicked */}
         <UpdateEmail
           email={speaker.email}
           updateSpeaker={updateSpeaker}
@@ -163,8 +161,16 @@ function SingleSpeaker(props) {
           setEmailIsClicked={setEmailIsClicked}
           emailIsClicked={emailIsClicked}
         />
-        <div>{speaker.email}</div>
-        <div>{speaker.company}</div>
+
+        <UpdateSpeakerValue
+          attribute={speaker.company}
+          updateSpeaker={updateSpeaker}
+          getAllSpeakers={props.getAllSpeakers}
+          setInput={setCompanyInput}
+          toggleClick={setCompanyIsClicked}
+          isClicked={companyIsClicked}
+        />
+
         <div>{speaker.position}</div>
       </div>
       <img src={speaker.avatar} alt="avatar" style={css.image} />

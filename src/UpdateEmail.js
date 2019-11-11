@@ -20,7 +20,7 @@ function UpdateEmail(props) {
   const onEmailChangeHandler = e => {
     props.setEmailInput(e.target.value);
   };
-  const updateNameHandler = () => {
+  const updateEmailHandler = () => {
     props.setEmailIsClicked(!props.emailIsClicked);
     props.updateSpeaker();
     props.getAllSpeakers();
@@ -39,7 +39,7 @@ function UpdateEmail(props) {
             placeholder="email"
             onChange={onEmailChangeHandler}
           />
-          <button style={css.inputButton} onClick={updateNameHandler}>
+          <button style={css.inputButton} onClick={updateEmailHandler}>
             Update
           </button>
         </div>
