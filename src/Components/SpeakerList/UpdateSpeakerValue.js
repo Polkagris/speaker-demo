@@ -1,5 +1,5 @@
 import React from "react";
-import "../Styles/HoverComponents.css";
+import "../../Styles/HoverComponents.css";
 
 function UpdateSpeakerValue(props) {
   const handleItemClick = () => {

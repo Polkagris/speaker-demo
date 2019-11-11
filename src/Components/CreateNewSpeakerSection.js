@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import base64 from "base-64";
-import SpeakerValueInput from "./SpeakerValueInput";
+import SpeakerValueInput from "./CreateSpeaker/SpeakerValueInput";
 
 function CreateNewSpeakerSection() {
   const [nameState, setNameState] = useState("");

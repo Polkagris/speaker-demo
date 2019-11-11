@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import base64 from "base-64";
 import UpdateSpeakerValue from "./UpdateSpeakerValue";
-import "../Styles/HoverComponents.css";
+import "../../Styles/HoverComponents.css";
 
 function SingleSpeaker(props) {
   // States

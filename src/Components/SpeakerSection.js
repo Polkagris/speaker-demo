@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import SingleSpeaker from "./SingleSpeaker";
+import SingleSpeaker from "./SpeakerList/SingleSpeaker";
 
 function SpeakerSection(props) {
   const [speakerObjectState, setSpeakerObjectState] = useState([]);
