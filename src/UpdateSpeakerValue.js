@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
+import "./HoverComponents.css";
 
 function UpdateSpeakerValue(props) {
-  // GENERIC ATTRIBUTE
   const handleItemClick = () => {
     props.toggleClick(!props.isClicked);
     console.log("company is clicked");
@@ -19,7 +19,7 @@ function UpdateSpeakerValue(props) {
 
   return (
     <div style={css.container}>
-      <div style={css.speakerValue} onClick={handleItemClick}>
+      <div className="speakerAttribute" onClick={handleItemClick}>
         {props.attribute || "undefined"}
       </div>
       {props.isClicked ? (
@@ -27,10 +27,10 @@ function UpdateSpeakerValue(props) {
           <input
             style={css.textInput}
             type="text"
-            placeholder={props.attribute}
+            placeholder={props.placeholderText}
             onChange={onItemChangeHandler}
           />
-          <button style={css.inputButton} onClick={updateItemHandler}>
+          <button className="updateButton" onClick={updateItemHandler}>
             Update
           </button>
         </div>
@@ -46,21 +46,6 @@ const css = {
   textInput: {
     padding: "20px",
     margin: "10px 0"
-  },
-  inputButton: {
-    padding: "20px",
-    margin: "10px 0",
-    border: "none",
-    textTransform: "uppercase",
-    textDecoration: "none",
-    backgroundColor: "#FFC725",
-    color: "white",
-    cursor: "pointer",
-    "&:hover": {
-      backgroundColor: "red",
-      color: "red",
-      padding: "100px"
-    }
   }
 };
 

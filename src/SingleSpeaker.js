@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import base64 from "base-64";
 import UpdateSpeakerValue from "./UpdateSpeakerValue";
+import "./HoverComponents.css";
 
 function SingleSpeaker(props) {
+  // States
   // name
   const [nameInput, setNameInput] = useState("");
   const [nameIsClicked, setNameIsClicked] = useState(false);
@@ -93,6 +95,7 @@ function SingleSpeaker(props) {
           setInput={setNameInput}
           toggleClick={setNameIsClicked}
           isClicked={nameIsClicked}
+          placeholderText="Name"
         />
         <UpdateSpeakerValue
           attribute={speaker.description}
@@ -101,6 +104,7 @@ function SingleSpeaker(props) {
           setInput={setDescriptionInput}
           toggleClick={setDescriptionIsClicked}
           isClicked={descriptionIsClicked}
+          placeholderText="Description"
         />
         <UpdateSpeakerValue
           attribute={speaker.email}
@@ -109,6 +113,7 @@ function SingleSpeaker(props) {
           setInput={setEmailInput}
           toggleClick={setEmailIsClicked}
           isClicked={emailIsClicked}
+          placeholderText="Email"
         />
         <UpdateSpeakerValue
           attribute={speaker.company}
@@ -117,17 +122,14 @@ function SingleSpeaker(props) {
           setInput={setCompanyInput}
           toggleClick={setCompanyIsClicked}
           isClicked={companyIsClicked}
+          placeholderText="Company"
         />
 
         <div>{speaker.position}</div>
       </div>
       <img src={speaker.avatar} alt="avatar" style={css.image} />
       <div style={css.buttonContainer}>
-        <button
-          style={css.button}
-          className="deleteButton"
-          onClick={onDeleteClickHandler}
-        >
+        <button className="deleteButton" onClick={onDeleteClickHandler}>
           Delete
         </button>
       </div>
@@ -153,49 +155,10 @@ const css = {
     flexDirection: "column",
     flex: "1 1 0"
   },
-  speakerValue: {
-    cursor: "pointer"
-  },
-  textInput: {
-    padding: "20px",
-    margin: "10px 0"
-  },
-  inputButton: {
-    padding: "20px",
-    margin: "10px 0",
-    border: "none",
-    textTransform: "uppercase",
-    textDecoration: "none",
-    backgroundColor: "#FFC725",
-    color: "white",
-    cursor: "pointer",
-    "&:hover": {
-      backgroundColor: "red",
-      color: "red",
-      padding: "100px"
-    }
-  },
   buttonContainer: {
     display: "flex",
     width: "100%",
     alignItems: "flex-end"
-  },
-  button: {
-    width: "100%",
-    height: "70px",
-    padding: "20px",
-    margin: "10px",
-    border: "none",
-    textTransform: "uppercase",
-    textDecoration: "none",
-    backgroundColor: "#581845",
-    color: "white",
-    cursor: "pointer",
-    "&:hover": {
-      backgroundColor: "red",
-      color: "red",
-      padding: "100px"
-    }
   },
   image: {
     maxWidth: "100px",

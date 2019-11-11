@@ -97,7 +97,7 @@ function CreateNewSpeakerSection() {
           placeholderText="ImageURL"
         />
       </form>
-      <button onClick={addNewSpeakerHandler} style={css.addButton}>
+      <button onClick={addNewSpeakerHandler} className="addButton">
         Add
       </button>
     </div>
@@ -123,22 +123,6 @@ const css = {
   inputField: {
     padding: "10px 20px",
     margin: "5px"
-  },
-  addButton: {
-    width: "100%",
-    padding: "20px",
-    border: "none",
-    textTransform: "uppercase",
-    fontSize: "25px",
-    textDecoration: "none",
-    backgroundColor: "#4CFF33",
-    color: "white",
-    cursor: "pointer",
-    "&:hover": {
-      backgroundColor: "red",
-      color: "red",
-      padding: "100px"
-    }
   }
 };
 
