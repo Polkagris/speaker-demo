@@ -1,6 +1,6 @@
 import React from "react";
-import SpeakerSection from "./SpeakerSection";
-import CreateNewSpeakerSection from "./CreateNewSPeakerSection";
+import SpeakerSection from "./Components/SpeakerSection";
+import CreateNewSpeakerSection from "./Components/CreateNewSpeakerSection";
 
 function App() {
   return (

@@ -1,4 +1,4 @@
-import React from "react";
+/* import React from "react";
 
 function SingleSpeakerValue(props) {
   return (
@@ -22,4 +22,4 @@ function SingleSpeakerValue(props) {
   );
 }
 
-export default SingleSpeakerValue;
+export default SingleSpeakerValue; */
