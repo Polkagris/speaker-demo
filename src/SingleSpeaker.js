@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import base64 from "base-64";
-import UpdateEmail from "./UpdateEmail";
 import UpdateSpeakerValue from "./UpdateSpeakerValue";
 
 function SingleSpeaker(props) {
-  const [nameIsClicked, setNameIsClicked] = useState(false);
-  const [descriptionIsClicked, setDescriptionIsClicked] = useState(false);
+  // name
   const [nameInput, setNameInput] = useState("");
+  const [nameIsClicked, setNameIsClicked] = useState(false);
+  // description
   const [descriptionInput, setDescriptionInput] = useState("");
-
-  // test email
+  const [descriptionIsClicked, setDescriptionIsClicked] = useState(false);
+  // email
   const [emailInput, setEmailInput] = useState("");
   const [emailIsClicked, setEmailIsClicked] = useState(false);
-
-  // test company
+  // company
   const [companyInput, setCompanyInput] = useState("");
   const [companyIsClicked, setCompanyIsClicked] = useState(false);
 
@@ -21,36 +20,6 @@ function SingleSpeaker(props) {
 
   const username = "appdemo";
   const password = "en kort demo";
-
-  // NAME
-  const handleNameClick = () => {
-    setNameIsClicked(!nameIsClicked);
-  };
-
-  const updateNameHandler = () => {
-    setNameIsClicked(!nameIsClicked);
-    updateSpeaker();
-    props.getAllSpeakers();
-  };
-
-  const onNameChangeHandler = e => {
-    setNameInput(e.target.value);
-  };
-
-  // DESCRIPTION
-  const handleDescriptionClick = () => {
-    setDescriptionIsClicked(!descriptionIsClicked);
-  };
-
-  const updateDescriptionHandler = () => {
-    setDescriptionIsClicked(!descriptionIsClicked);
-    updateSpeaker();
-    props.getAllSpeakers();
-  };
-
-  const onDescriptionChangeHandler = e => {
-    setDescriptionInput(e.target.value);
-  };
 
   // UPDATE
   const updateSpeaker = () => {
@@ -117,51 +86,30 @@ function SingleSpeaker(props) {
   return (
     <div style={css.container}>
       <div style={css.speakerTextColumn}>
-        <div style={css.speakerValue} onClick={handleNameClick}>
-          {speaker.name || "undefined"}
-        </div>
-        {nameIsClicked ? (
-          <div>
-            <input
-              style={css.textInput}
-              type="text"
-              placeholder="name"
-              onChange={onNameChangeHandler}
-            />
-            <button style={css.inputButton} onClick={updateNameHandler}>
-              Update
-            </button>
-          </div>
-        ) : (
-          false
-        )}
-        <div style={css.speakerValue} onClick={handleDescriptionClick}>
-          {speaker.description || "undefined"}
-        </div>
-        {descriptionIsClicked ? (
-          <div>
-            <input
-              style={css.textInput}
-              type="text"
-              placeholder="description"
-              onChange={onDescriptionChangeHandler}
-            />
-            <button style={css.inputButton} onClick={updateDescriptionHandler}>
-              Update
-            </button>
-          </div>
-        ) : (
-          false
-        )}
-        <UpdateEmail
-          email={speaker.email}
+        <UpdateSpeakerValue
+          attribute={speaker.name}
           updateSpeaker={updateSpeaker}
           getAllSpeakers={props.getAllSpeakers}
-          setEmailInput={setEmailInput}
-          setEmailIsClicked={setEmailIsClicked}
-          emailIsClicked={emailIsClicked}
+          setInput={setNameInput}
+          toggleClick={setNameIsClicked}
+          isClicked={nameIsClicked}
         />
-
+        <UpdateSpeakerValue
+          attribute={speaker.description}
+          updateSpeaker={updateSpeaker}
+          getAllSpeakers={props.getAllSpeakers}
+          setInput={setDescriptionInput}
+          toggleClick={setDescriptionIsClicked}
+          isClicked={descriptionIsClicked}
+        />
+        <UpdateSpeakerValue
+          attribute={speaker.email}
+          updateSpeaker={updateSpeaker}
+          getAllSpeakers={props.getAllSpeakers}
+          setInput={setEmailInput}
+          toggleClick={setEmailIsClicked}
+          isClicked={emailIsClicked}
+        />
         <UpdateSpeakerValue
           attribute={speaker.company}
           updateSpeaker={updateSpeaker}

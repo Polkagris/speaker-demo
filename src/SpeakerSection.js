@@ -67,6 +67,7 @@ function SpeakerSection(props) {
   return (
     <div>
       <div style={css.wrapper}>
+        <h3 style={css.infoText}>Click to update attributes</h3>
         {speakerObjectState
           .sort((a, b) => a.position - b.position)
           .map(it => (
@@ -89,12 +90,12 @@ const css = {
     justifyContent: "center",
     fontFamily: "Montserrat"
   },
-  title: {
+  infoText: {
     textAlign: "center",
     color: "black",
     width: "100%",
     fontWeight: "bold",
-    fontSize: "45px",
+    fontSize: "25px",
 
     hover: {
       color: "red"

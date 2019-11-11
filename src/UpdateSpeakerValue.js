@@ -1,19 +1,11 @@
 import React, { useState } from "react";
 
 function UpdateSpeakerValue(props) {
-  /* 
-    updateSpeaker={updateSpeaker}
-    getAllSpeakers={props.getAllSpeakers}
-    attribute={speaker.company}
-    setInput={setCompanyInput}
-    toggleClick={setCompanyIsClicked}
-    isClicked={companyIsClicked}/> */
-
-  // EMAIL
+  // GENERIC ATTRIBUTE
   const handleItemClick = () => {
     props.toggleClick(!props.isClicked);
     console.log("company is clicked");
-    console.log("clicked company state:", props.emailIsClicked);
+    console.log("clicked company state:", props.isClicked);
   };
 
   const onItemChangeHandler = e => {
@@ -35,7 +27,7 @@ function UpdateSpeakerValue(props) {
           <input
             style={css.textInput}
             type="text"
-            placeholder="email"
+            placeholder={props.attribute}
             onChange={onItemChangeHandler}
           />
           <button style={css.inputButton} onClick={updateItemHandler}>
