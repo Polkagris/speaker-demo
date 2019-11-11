@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import base64 from "base-64";
-import SingleSpeakerUpdateValue from "./SingleSpeakerUpdateValue";
+import UpdateEmail from "./UpdateEmail";
 
 function SingleSpeaker(props) {
   const [nameIsClicked, setNameIsClicked] = useState(false);
   const [descriptionIsClicked, setDescriptionIsClicked] = useState(false);
   const [nameInput, setNameInput] = useState("");
   const [descriptionInput, setDescriptionInput] = useState("");
+
+  // test email
+  const [emailInput, setEmailInput] = useState("");
+  const [emailIsClicked, setEmailIsClicked] = useState(false);
+
   const { speaker } = props;
 
   const username = "appdemo";
@@ -58,7 +63,8 @@ function SingleSpeaker(props) {
         method: "POST",
         body: JSON.stringify({
           name: nameInput || speaker.name,
-          description: descriptionInput || speaker.description
+          description: descriptionInput || speaker.description,
+          email: emailInput || speaker.email
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -141,6 +147,22 @@ function SingleSpeaker(props) {
         ) : (
           false
         )}
+        {/* // PROPS NEEDED
+  // speaker.email
+  // updateSpeaker
+  // getAllSpeakers
+
+  // STATE NEEDED
+  // setEmailInput
+  // setEmailIsClicked */}
+        <UpdateEmail
+          email={speaker.email}
+          updateSpeaker={updateSpeaker}
+          getAllSpeakers={props.getAllSpeakers}
+          setEmailInput={setEmailInput}
+          setEmailIsClicked={setEmailIsClicked}
+          emailIsClicked={emailIsClicked}
+        />
         <div>{speaker.email}</div>
         <div>{speaker.company}</div>
         <div>{speaker.position}</div>
