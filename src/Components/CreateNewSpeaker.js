@@ -8,8 +8,6 @@ function CreateNewSpeakerSection() {
   const [emailState, setEmailState] = useState("");
   const [companyState, setCompanyState] = useState("");
   const [imageUrlState, setImageUrlState] = useState("");
-  const username = "appdemo";
-  const password = "en kort demo";
 
   // For testing the object that is sent
   const speakerObject = {
@@ -40,6 +38,9 @@ function CreateNewSpeakerSection() {
     document.getElementById("speakerInputForm").reset();
   };
 
+  const username = "appdemo";
+  const password = "en kort demo";
+
   // CREATE NEW SPEAKER
   const addNewSpeakerHandler = () => {
     console.log("clicked create new speaker!", speakerObject);
@@ -54,7 +55,6 @@ function CreateNewSpeakerSection() {
     fetch(
       "https://planet9test.neptune-software.com:8081/api/entity/festival-speakers",
       {
-        headers: headers,
         method: "PUT",
         body: JSON.stringify({
           name: nameState || "undefined",
@@ -64,7 +64,8 @@ function CreateNewSpeakerSection() {
           avatar: imageUrlState || "undefined"
         }),
         headers: {
-          "Content-type": "application/json; charset=UTF-8"
+          "Content-type": "application/json; charset=UTF-8",
+          Authorization: "Basic " + base64.encode(username + ":" + password)
         }
       }
     ).then(response => {
