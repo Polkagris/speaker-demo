@@ -57,7 +57,6 @@ function SingleSpeaker(props) {
 
   // DELETE
   const onDeleteClickHandler = () => {
-    console.log("delete this");
     if (!window.confirm(`Are you sure you want to delete ${speaker.name}?`))
       return;
     const queryString = encodeURI(`{"id":"${speaker.id}"}`);
