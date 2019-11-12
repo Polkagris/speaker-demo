@@ -2,21 +2,12 @@ import React, { useState } from "react";
 import base64 from "base-64";
 import SpeakerValueInput from "./CreateSpeaker/SpeakerValueInput";
 
-function CreateNewSpeakerSection() {
+function CreateNewSpeakerSection(props) {
   const [nameState, setNameState] = useState("");
   const [descriptionState, setDescriptionState] = useState("");
   const [emailState, setEmailState] = useState("");
   const [companyState, setCompanyState] = useState("");
   const [imageUrlState, setImageUrlState] = useState("");
-
-  // For testing the object that is sent
-  const speakerObject = {
-    name: nameState,
-    description: descriptionState,
-    email: emailState,
-    company: companyState,
-    avatar: imageUrlState
-  };
 
   const nameChangeHandler = e => {
     setNameState(e.target.value);
@@ -43,8 +34,6 @@ function CreateNewSpeakerSection() {
 
   // CREATE NEW SPEAKER
   const addNewSpeakerHandler = () => {
-    console.log("clicked create new speaker!", speakerObject);
-
     let headers = new Headers();
 
     headers.set(
@@ -69,8 +58,14 @@ function CreateNewSpeakerSection() {
         }
       }
     ).then(response => {
+      handleUpdatedSpeakers();
       return response.json();
     });
+  };
+
+  // For updating list
+  const handleUpdatedSpeakers = () => {
+    props.setUpdateState(false);
   };
 
   return (
